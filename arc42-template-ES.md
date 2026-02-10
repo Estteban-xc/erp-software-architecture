@@ -1,6 +1,6 @@
 ---
 date: Febrero 2026
-title: Documentación ERP - Módulo de Compras ![arc42](images/arc42-logo.png)
+title: Documentación ERP - Módulo de Compras ![arc42](Docs/images/arc42-logo.png)
 ---
 
 # Acerca de arc42
@@ -59,7 +59,7 @@ El Sistema ERP del Módulo de Compras tiene como objetivo centralizar y automati
 
 El ERP del Módulo de Compras interactúa con usuarios internos (gestores y jefes de compras) y sistemas externos de contabilidad para formalizar la adquisición de productos y mantener datos actualizados.
 
-![Diagrama de Contexto](./images/Diagrama de Contexto_(Nivel 1 - C1).png)
+![Diagrama de Contexto](docs/images/c1_context.png)
 
 ## Contexto Técnico {#_contexto_técnico}
 
@@ -75,7 +75,7 @@ El sistema utiliza una arquitectura monolítica simple para garantizar rapidez e
 
 ## Sistema General de Caja Blanca {#_sistema_general_de_caja_blanca}
 
-![Diagrama de Contenedores](./images/c2_containers.png)
+![Diagrama de Contenedores](docs/images/c2_containers.png)
 
 ### Contenedores
 
@@ -94,9 +94,20 @@ El sistema utiliza una arquitectura monolítica simple para garantizar rapidez e
 5. La API responde a la SPA con estado 201 Created.
 6. La SPA muestra un mensaje de éxito y actualiza la lista de productos.
 
-![Diagrama de Secuencia](./images/diagrama_secuencia.png)
+![Diagrama de Secuencia](docs/images/diagrama_secuencia.png)
+
+# Modelo de Datos {#section-data-model}
+
+![Diagrama Entidad-Relación](docs/images/diagrama_mer.png)
+
+- **Producto**: id, nombre, descripción, unidad de medida.
+- **Proveedor**: id, nombre, contacto.
+- **Producto_Proveedor**: id_producto, id_proveedor, precio_unitario.
+- Relaciones: Un producto puede tener múltiples proveedores, un proveedor puede ofrecer múltiples productos.
 
 # Vista de Despliegue {#section-deployment-view}
+
+![Diagrama de Despliegue](docs/images/diagrama_despliegue.png)
 
 - La SPA se despliega en un servidor web (NGINX o similar).
 - La API Monolítica corre en un servidor de aplicaciones Java/Spring Boot.
@@ -142,4 +153,5 @@ El sistema utiliza una arquitectura monolítica simple para garantizar rapidez e
 +------------------+-------------------------------------------+
 | Jefe de Compras  | Usuario que analiza historial y reportes.|
 +------------------+-------------------------------------------+
+
 
