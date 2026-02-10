@@ -1,6 +1,6 @@
 ---
 date: Febrero 2026
-title: Documentación ERP - Módulo de Compras ![arc42] (./images/arc42-logo.png)
+title: Documentación ERP - Módulo de Compras ![arc42](images/arc42-logo.png)
 ---
 
 # Acerca de arc42
@@ -15,25 +15,27 @@ Revisión de la plantilla: 7.0 ES (basada en asciidoc), Enero 2017
 arquitectura arc42, <https://www.arc42.org>. Creada por Dr. Peter
 Hruschka y Dr. Gernot Starke.
 
-# Introducción y Metas {#section-introduction-and-goals}
+# 01. Introducción y Metas
 
-## Vista de Requerimientos {#_vista_de_requerimientos}
+## Objetivo del Sistema ERP - Módulo de Compras
 
-El Sistema ERP del Módulo de Compras tiene como objetivo centralizar y automatizar los procesos de compras de la empresa.
+El sistema ERP del Módulo de Compras tiene como objetivo centralizar y automatizar los procesos de adquisición de productos de la empresa, mejorando la eficiencia, confiabilidad y control de inventarios y proveedores.
 
-### Requisitos de negocio principales
+## Requisitos de Negocio
+
 - Registrar productos con información básica (nombre, descripción, unidad de medida).
 - Gestionar proveedores y sus datos de contacto.
 - Asociar productos a proveedores y precios.
 - Crear y registrar órdenes de compra.
 - Consultar historial de órdenes de compra para análisis y reportes.
 
-## Metas de Calidad {#_metas_de_calidad}
+## Metas de Calidad
+
 - Sistema confiable y sin pérdida de datos.
 - Interfaz amigable para los gestores.
 - Procesamiento rápido de solicitudes de compra.
 
-## Partes interesadas (Stakeholders) {#_partes_interesadas_stakeholders}
+## Partes interesadas (Stakeholders)
 
 +------------------+----------------+----------------------------+
 | Rol/Nombre       | Contacto       | Expectativas              |
@@ -45,47 +47,43 @@ El Sistema ERP del Módulo de Compras tiene como objetivo centralizar y automati
 | Analista de Compras| correo@empresa | Gestionar proveedores y precios              |
 +------------------+----------------+----------------------------+
 
-# Restricciones de la Arquitectura {#section-architecture-constraints}
+# 02. Restricciones de la Arquitectura
 
 - Backend: Java con Spring Boot
 - Frontend: SPA con React/JavaScript
 - Base de datos: PostgreSQL
 - Comunicación: HTTPS/JSON entre frontend y backend
-- Arquitectura: Monolítica simple para el módulo de compras
+- Arquitectura: Monolítica simple para el Módulo de Compras
 
-# Alcance y Contexto del Sistema {#section-context-and-scope}
+# 03. Alcance y Contexto del Sistema
 
-## Contexto de Negocio {#_contexto_de_negocio}
+## Contexto de Negocio
 
 El ERP del Módulo de Compras interactúa con usuarios internos (gestores y jefes de compras) y sistemas externos de contabilidad para formalizar la adquisición de productos y mantener datos actualizados.
 
-![Diagrama de Contexto](docs/images/c1_context.png)
+![Diagrama de Contexto](./images/Diagrama de Contexto_(Nivel 1 - C1).png)
 
-## Contexto Técnico {#_contexto_técnico}
+## Contexto Técnico
 
 - SPA: Interfaz web que los usuarios utilizan para registrar productos y órdenes.
 - API Monolítica: Gestiona la lógica de negocio y procesa solicitudes del frontend.
 - Base de datos PostgreSQL: Almacena productos, proveedores, relaciones y órdenes de compra.
 
-# Estrategia de solución {#section-solution-strategy}
+# 05. Vista de Bloques
 
-El sistema utiliza una arquitectura monolítica simple para garantizar rapidez en el desarrollo y facilidad de mantenimiento. La SPA se comunica con la API que gestiona toda la lógica de negocio y la base de datos.
+## Diagrama de Contenedores
 
-# Vista de Bloques {#section-building-block-view}
+![Diagrama de Contenedores](./images/Diagrama de Contenedores_(Nivel 2 - C2).png)
 
-## Sistema General de Caja Blanca {#_sistema_general_de_caja_blanca}
+## Responsabilidad de los Contenedores
 
-![Diagrama de Contenedores](docs/images/c2_containers.png)
+- **SPA (Aplicación Web):** Permite a los usuarios interactuar con el sistema para registrar productos, gestionar proveedores y crear órdenes de compra.
+- **API Monolítica:** Procesa todas las solicitudes, valida datos y realiza operaciones sobre la base de datos.
+- **Base de Datos (PostgreSQL):** Almacena productos, proveedores, relaciones y órdenes de compra.
 
-### Contenedores
+# 06. Vista de Ejecución
 
-- **SPA (Aplicación Web)**: Permite a los usuarios interactuar con el sistema para registrar productos, gestionar proveedores y crear órdenes de compra.
-- **API Monolítica**: Procesa todas las solicitudes, valida datos y realiza operaciones sobre la base de datos.
-- **Base de Datos (PostgreSQL)**: Almacena productos, proveedores, relaciones y órdenes de compra.
-
-# Vista de Ejecución {#section-runtime-view}
-
-## Escenario crítico: Registrar un Producto
+## Escenario Crítico: Registrar un Producto
 
 1. El gestor completa el formulario de nuevo producto en la SPA.
 2. La SPA envía los datos a la API mediante POST /api/productos.
@@ -94,51 +92,16 @@ El sistema utiliza una arquitectura monolítica simple para garantizar rapidez e
 5. La API responde a la SPA con estado 201 Created.
 6. La SPA muestra un mensaje de éxito y actualiza la lista de productos.
 
-![Diagrama de Secuencia](docs/images/diagrama_secuencia.png)
+![Diagrama de Secuencia](./images/Diagrama de Secuencia_(Historia “Registrar Productos”).png)
 
-# Modelo de Datos {#section-data-model}
-
-![Diagrama Entidad-Relación](docs/images/diagrama_mer.png)
-
-- **Producto**: id, nombre, descripción, unidad de medida.
-- **Proveedor**: id, nombre, contacto.
-- **Producto_Proveedor**: id_producto, id_proveedor, precio_unitario.
-- Relaciones: Un producto puede tener múltiples proveedores, un proveedor puede ofrecer múltiples productos.
-
-# Vista de Despliegue {#section-deployment-view}
-
-![Diagrama de Despliegue](docs/images/diagrama_despliegue.png)
+# 07. Vista de Despliegue
 
 - La SPA se despliega en un servidor web (NGINX o similar).
 - La API Monolítica corre en un servidor de aplicaciones Java/Spring Boot.
 - La base de datos PostgreSQL puede estar en el mismo servidor o en un servidor dedicado.
 - Todo el tráfico es seguro mediante HTTPS.
 
-# Conceptos Transversales (Cross-cutting) {#section-concepts}
-
-- Seguridad: Autenticación de usuarios y permisos según roles.
-- Integridad de datos: Validaciones en API para evitar inconsistencias.
-- Escalabilidad: Aunque es monolítico, la arquitectura permite migración a microservicios futura.
-
-# Decisiones de Diseño {#section-design-decisions}
-
-- Usar arquitectura monolítica para simplificar despliegue.
-- Separación clara entre frontend (SPA) y backend (API).
-- PostgreSQL como base de datos principal por su robustez y soporte de transacciones.
-
-# Requerimientos de Calidad {#section-quality-scenarios}
-
-- Alta disponibilidad: El sistema debe estar disponible > 99% del tiempo.
-- Rendimiento: Registro de un producto debe completarse en <2 segundos.
-- Seguridad: Datos de proveedores y productos cifrados en base de datos.
-
-# Riesgos y deuda técnica {#section-technical-risks}
-
-- Riesgo de dependencia de un único servidor en la versión monolítica.
-- Posible dificultad para escalar verticalmente con alto volumen de pedidos.
-- Necesidad futura de migrar a microservicios si la empresa crece.
-
-# Glosario {#section-glossary}
+# 10. Glosario
 
 +------------------+-------------------------------------------+
 | Término          | Definición                                |
@@ -153,5 +116,6 @@ El sistema utiliza una arquitectura monolítica simple para garantizar rapidez e
 +------------------+-------------------------------------------+
 | Jefe de Compras  | Usuario que analiza historial y reportes.|
 +------------------+-------------------------------------------+
+
 
 
