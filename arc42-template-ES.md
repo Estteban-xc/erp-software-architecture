@@ -59,7 +59,7 @@ El Sistema ERP del Módulo de Compras tiene como objetivo centralizar y automati
 
 El ERP del Módulo de Compras interactúa con usuarios internos (gestores y jefes de compras) y sistemas externos de contabilidad para formalizar la adquisición de productos y mantener datos actualizados.
 
-![Diagrama de Contexto](./images/c1_context.png)
+![Diagrama de Contexto](./images/Diagrama de Contexto_(Nivel 1 - C1).png)
 
 ## Contexto Técnico {#_contexto_técnico}
 
