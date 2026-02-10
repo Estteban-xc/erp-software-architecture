@@ -8,7 +8,7 @@ El sistema analizado corresponde a un ERP, con énfasis en el Módulo de Compras
 
 ## Gestión del Proyecto
 - Tablero Jira / Notion:
-  https://enlace-a-tu-tablero
+  [https://enlace-a-tu-tablero](https://estebanvarelaumb.atlassian.net/jira/software/projects/PEGX/boards/69/backlog?atlOrigin=eyJpIjoiMjAwZjIwM2YyNzAzNGRjZGE3YWM4NjYzYTI0MGUwNzUiLCJwIjoiaiJ9)
 
 ## Estructura del Repositorio
 - /docs/arc42: Documentación de arquitectura basada en la plantilla arc42.
