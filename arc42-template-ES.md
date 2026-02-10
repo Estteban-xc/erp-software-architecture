@@ -1,6 +1,6 @@
 ---
 date: Febrero 2026
-title: Documentación ERP - Módulo de Compras ![arc42](Docs/images/arc42-logo.png)
+title: Documentación ERP - Módulo de Compras ![arc42] (./images/arc42-logo.png)
 ---
 
 # Acerca de arc42
