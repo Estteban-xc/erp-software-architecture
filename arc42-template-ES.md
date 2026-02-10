@@ -61,7 +61,7 @@ El sistema ERP del Módulo de Compras tiene como objetivo centralizar y automati
 
 El ERP del Módulo de Compras interactúa con usuarios internos (gestores y jefes de compras) y sistemas externos de contabilidad para formalizar la adquisición de productos y mantener datos actualizados.
 
-![Diagrama de Contexto](./images/Diagrama_Contexto_C1.png)
+![Diagrama de Contexto](./Docs/images/Diagrama_Contexto_C1.png)
 
 ## Contexto Técnico
 
@@ -73,7 +73,7 @@ El ERP del Módulo de Compras interactúa con usuarios internos (gestores y jefe
 
 ## Diagrama de Contenedores
 
-![Diagrama de Contenedores](./images/Diagrama_Contenedores_C2.png)
+![Diagrama de Contenedores](./Docs/images/Diagrama_Contenedores_C2.png)
 
 ## Responsabilidad de los Contenedores
 
@@ -92,7 +92,7 @@ El ERP del Módulo de Compras interactúa con usuarios internos (gestores y jefe
 5. La API responde a la SPA con estado 201 Created.
 6. La SPA muestra un mensaje de éxito y actualiza la lista de productos.
 
-![Diagrama de Secuencia](./images/Diagrama_Secuencia.png)
+![Diagrama de Secuencia](./Docs/images/Diagrama_Secuencia.png)
 
 # 07. Vista de Despliegue
 
