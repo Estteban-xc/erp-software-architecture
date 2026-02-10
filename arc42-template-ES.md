@@ -1,14 +1,11 @@
 ---
-date: Enero 2023
-title: Plantilla ![arc42](images/arc42-logo.png)
+date: Febrero 2026
+title: Documentación ERP - Módulo de Compras ![arc42](images/arc42-logo.png)
 ---
 
-# 
+# Acerca de arc42
 
-**Acerca de arc42**
-
-arc42, La plantilla de documentación para arquitectura de sistemas y de
-software.
+arc42, La plantilla de documentación para arquitectura de sistemas y de software.
 
 Por Dr. Gernot Starke, Dr. Peter Hruschka y otros contribuyentes.
 
@@ -22,199 +19,127 @@ Hruschka y Dr. Gernot Starke.
 
 ## Vista de Requerimientos {#_vista_de_requerimientos}
 
+El Sistema ERP del Módulo de Compras tiene como objetivo centralizar y automatizar los procesos de compras de la empresa.
+
+### Requisitos de negocio principales
+- Registrar productos con información básica (nombre, descripción, unidad de medida).
+- Gestionar proveedores y sus datos de contacto.
+- Asociar productos a proveedores y precios.
+- Crear y registrar órdenes de compra.
+- Consultar historial de órdenes de compra para análisis y reportes.
+
 ## Metas de Calidad {#_metas_de_calidad}
+- Sistema confiable y sin pérdida de datos.
+- Interfaz amigable para los gestores.
+- Procesamiento rápido de solicitudes de compra.
 
 ## Partes interesadas (Stakeholders) {#_partes_interesadas_stakeholders}
 
-+-------------+---------------------------+---------------------------+
-| Rol/Nombre  | Contacto                  | Expectativas              |
-+=============+===========================+===========================+
-| *           | *\<Contact-1\>*           | *\<Expectation-1\>*       |
-| \<Role-1\>* |                           |                           |
-+-------------+---------------------------+---------------------------+
-| *           | *\<Contact-2\>*           | *\<Expectation-2\>*       |
-| \<Role-2\>* |                           |                           |
-+-------------+---------------------------+---------------------------+
++------------------+----------------+----------------------------+
+| Rol/Nombre       | Contacto       | Expectativas              |
++==================+================+============================+
+| Gestor de Compras| correo@empresa | Registrar productos y proveedores fácilmente |
++------------------+----------------+----------------------------+
+| Jefe de Compras  | correo@empresa | Analizar historial de compras y reportes     |
++------------------+----------------+----------------------------+
+| Analista de Compras| correo@empresa | Gestionar proveedores y precios              |
++------------------+----------------+----------------------------+
 
 # Restricciones de la Arquitectura {#section-architecture-constraints}
+
+- Backend: Java con Spring Boot
+- Frontend: SPA con React/JavaScript
+- Base de datos: PostgreSQL
+- Comunicación: HTTPS/JSON entre frontend y backend
+- Arquitectura: Monolítica simple para el módulo de compras
 
 # Alcance y Contexto del Sistema {#section-context-and-scope}
 
 ## Contexto de Negocio {#_contexto_de_negocio}
 
-**\<Diagrama o Tabla\>**
+El ERP del Módulo de Compras interactúa con usuarios internos (gestores y jefes de compras) y sistemas externos de contabilidad para formalizar la adquisición de productos y mantener datos actualizados.
 
-**\<optionally: Explanation of external domain interfaces\>**
+![Diagrama de Contexto](./images/c1_context.png)
 
 ## Contexto Técnico {#_contexto_técnico}
 
-**\<Diagrama o Tabla\>**
-
-**\<Opcional: Explicación de las interfases técnicas\>**
-
-**\<Mapeo de Entrada/Salida a canales\>**
+- SPA: Interfaz web que los usuarios utilizan para registrar productos y órdenes.
+- API Monolítica: Gestiona la lógica de negocio y procesa solicitudes del frontend.
+- Base de datos PostgreSQL: Almacena productos, proveedores, relaciones y órdenes de compra.
 
 # Estrategia de solución {#section-solution-strategy}
+
+El sistema utiliza una arquitectura monolítica simple para garantizar rapidez en el desarrollo y facilidad de mantenimiento. La SPA se comunica con la API que gestiona toda la lógica de negocio y la base de datos.
 
 # Vista de Bloques {#section-building-block-view}
 
 ## Sistema General de Caja Blanca {#_sistema_general_de_caja_blanca}
 
-***\<Diagrama general\>***
+![Diagrama de Contenedores](./images/c2_containers.png)
 
-Motivación
+### Contenedores
 
-:   *\<Explicación en texto\>*
-
-Bloques de construcción contenidos
-
-:   *\<Desripción de los bloques de construcción contenidos (Cajas
-    negras)\>*
-
-Interfases importantes
-
-:   *\<Descripción de las interfases importantes\>*
-
-### \<Caja Negra 1\> {#_caja_negra_1}
-
-*\<Propósito/Responsabilidad\>*
-
-*\<Interfase(s)\>*
-
-*\<(Opcional) Características de Calidad/Performance\>*
-
-*\<(Opcional) Ubicación Archivo/Directorio\>*
-
-*\<(Opcional) Requerimientos Satisfechos\>*
-
-*\<(Opcional) Riesgos/Problemas/Incidentes Abiertos\>*
-
-### \<Caja Negra 2\> {#_caja_negra_2}
-
-*\<plantilla de caja negra\>*
-
-### \<Caja Negra N\> {#_caja_negra_n}
-
-*\<Plantilla de caja negra\>*
-
-### \<Interfase 1\> {#_interfase_1}
-
-...​
-
-### \<Interfase m\> {#_interfase_m}
-
-## Nivel 2 {#_nivel_2}
-
-### Caja Blanca *\<bloque de construcción 1\>* {#_caja_blanca_bloque_de_construcción_1}
-
-*\<plantilla de caja blanca\>*
-
-### Caja Blanca *\<bloque de construcción 2\>* {#_caja_blanca_bloque_de_construcción_2}
-
-*\<plantilla de caja blanca\>*
-
-...​
-
-### Caja Blanca *\<bloque de construcción m\>* {#_caja_blanca_bloque_de_construcción_m}
-
-*\<plantilla de caja blanca\>*
-
-## Nivel 3 {#_nivel_3}
-
-### Caja Blanca \<\_bloque de construcción x.1\_\> {#_caja_blanca_bloque_de_construcción_x_1}
-
-*\<plantilla de caja blanca\>*
-
-### Caja Blanca \<\_bloque de construcción x.2\_\> {#_caja_blanca_bloque_de_construcción_x_2}
-
-*\<plantilla de caja blanca\>*
-
-### Caja Blanca \<\_bloque de construcción y.1\_\> {#_caja_blanca_bloque_de_construcción_y_1}
-
-*\<plantilla de caja blanca\>*
+- **SPA (Aplicación Web)**: Permite a los usuarios interactuar con el sistema para registrar productos, gestionar proveedores y crear órdenes de compra.
+- **API Monolítica**: Procesa todas las solicitudes, valida datos y realiza operaciones sobre la base de datos.
+- **Base de Datos (PostgreSQL)**: Almacena productos, proveedores, relaciones y órdenes de compra.
 
 # Vista de Ejecución {#section-runtime-view}
 
-## \<Escenario de ejecución 1\> {#_escenario_de_ejecución_1}
+## Escenario crítico: Registrar un Producto
 
--   *\<Inserte un diagrama de ejecución o la descripción del
-    escenario\>*
+1. El gestor completa el formulario de nuevo producto en la SPA.
+2. La SPA envía los datos a la API mediante POST /api/productos.
+3. La API valida los datos y los inserta en la base de datos.
+4. La base de datos devuelve el ID del producto creado.
+5. La API responde a la SPA con estado 201 Created.
+6. La SPA muestra un mensaje de éxito y actualiza la lista de productos.
 
--   *\<Inserte la descripción de aspectos notables de las interacciones
-    entre los bloques de construcción mostrados en este diagrama.\>*
-
-## \<Escenario de ejecución 2\> {#_escenario_de_ejecución_2}
-
-## ...​
-
-## \<Escenario de ejecución n\> {#_escenario_de_ejecución_n}
+![Diagrama de Secuencia](./images/diagrama_secuencia.png)
 
 # Vista de Despliegue {#section-deployment-view}
 
-## Nivel de infraestructura 1 {#_nivel_de_infraestructura_1}
-
-***\<Diagrama General\>***
-
-Motivación
-
-:   *\<Explicación en forma textual\>*
-
-Características de Calidad/Rendimiento
-
-:   *\<Explicación en forma textual\>*
-
-    Mapeo de los Bloques de Construcción a Infraestructura
-
-    :   *\<Descripción del mapeo\>*
-
-## Nivel de Infraestructura 2 {#_nivel_de_infraestructura_2}
-
-### *\<Elemento de Infraestructura 1\>* {#_elemento_de_infraestructura_1}
-
-*\<diagrama + explicación\>*
-
-### *\<Elemento de Infraestructura 2\>* {#_elemento_de_infraestructura_2}
-
-*\<diagrama + explicación\>*
-
-...​
-
-### *\<Elemento de Infraestructura n\>* {#_elemento_de_infraestructura_n}
-
-*\<diagrama + explicación\>*
+- La SPA se despliega en un servidor web (NGINX o similar).
+- La API Monolítica corre en un servidor de aplicaciones Java/Spring Boot.
+- La base de datos PostgreSQL puede estar en el mismo servidor o en un servidor dedicado.
+- Todo el tráfico es seguro mediante HTTPS.
 
 # Conceptos Transversales (Cross-cutting) {#section-concepts}
 
-## *\<Concepto 1\>* {#_concepto_1}
-
-*\<explicación\>*
-
-## *\<Concepto 2\>* {#_concepto_2}
-
-*\<explicación\>*
-
-...​
-
-## *\<Concepto n\>* {#_concepto_n}
-
-*\<explicación\>*
+- Seguridad: Autenticación de usuarios y permisos según roles.
+- Integridad de datos: Validaciones en API para evitar inconsistencias.
+- Escalabilidad: Aunque es monolítico, la arquitectura permite migración a microservicios futura.
 
 # Decisiones de Diseño {#section-design-decisions}
 
+- Usar arquitectura monolítica para simplificar despliegue.
+- Separación clara entre frontend (SPA) y backend (API).
+- PostgreSQL como base de datos principal por su robustez y soporte de transacciones.
+
 # Requerimientos de Calidad {#section-quality-scenarios}
 
-## Árbol de Calidad {#_árbol_de_calidad}
-
-## Escenarios de calidad {#_escenarios_de_calidad}
+- Alta disponibilidad: El sistema debe estar disponible > 99% del tiempo.
+- Rendimiento: Registro de un producto debe completarse en <2 segundos.
+- Seguridad: Datos de proveedores y productos cifrados en base de datos.
 
 # Riesgos y deuda técnica {#section-technical-risks}
 
+- Riesgo de dependencia de un único servidor en la versión monolítica.
+- Posible dificultad para escalar verticalmente con alto volumen de pedidos.
+- Necesidad futura de migrar a microservicios si la empresa crece.
+
 # Glosario {#section-glossary}
 
-+----------------------+-----------------------------------------------+
-| Término              | Definición                                    |
-+======================+===============================================+
-| *\<Término-1\>*      | *\<definicion-1\>*                            |
-+----------------------+-----------------------------------------------+
-| *\<Término-2\>*      | *\<definicion-2\>*                            |
-+----------------------+-----------------------------------------------+
++------------------+-------------------------------------------+
+| Término          | Definición                                |
++==================+===========================================+
+| Producto         | Bien o artículo que se puede comprar.    |
++------------------+-------------------------------------------+
+| Proveedor        | Entidad que suministra productos.        |
++------------------+-------------------------------------------+
+| Orden de Compra  | Documento que formaliza la adquisición. |
++------------------+-------------------------------------------+
+| Gestor de Compras| Usuario que registra productos y órdenes.|
++------------------+-------------------------------------------+
+| Jefe de Compras  | Usuario que analiza historial y reportes.|
++------------------+-------------------------------------------+
+
